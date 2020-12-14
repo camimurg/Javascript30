@@ -8,7 +8,7 @@ body {
 }
 
 :root {
-  --base: #000000;
+  --base: #000;
   --spacing: 10px;
   --blur: 10px;
 }
