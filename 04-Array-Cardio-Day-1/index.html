@@ -74,7 +74,7 @@
       return lastInventor > nextInventor ? -1 : 1
     });
 
-    console.table(oldest);
+    //console.table(oldest);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -92,16 +92,26 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    const alpha = people.sort(function(lastOne, nextOne) {
+    const alpha = people.sort((lastOne, nextOne) => {
       const [aLast, aFirst] = lastOne.split(', ');
       const [bLast, bFirst] = nextOne.split(', ');
       return aLast > bLast ? 1 : -1 ;
-      console.log(alpha);
     });
+    //console.table(alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const transportation = data.reduce(function(obj, item) {
+      if(!obj[item]) {  // if there is no object item
+        obj[item] = 0;  // then object item is equal to zero
+      }
+      obj[item]++;      // we increment it
+      return obj;       // and return that object
+    }, {});             // {} is the empty object! hard to get..
+
+    console.log(transportation)
+
 
   </script>
 </body>
