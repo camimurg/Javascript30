@@ -17,6 +17,7 @@ body {
 .panels {
   min-height: 100vh;
   overflow: hidden;
+  display: flex;
 }
 
 .panel {
@@ -34,6 +35,12 @@ body {
   font-size: 20px;
   background-size: cover;
   background-position: center;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -42,12 +49,23 @@ body {
 .panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
 .panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
 
-/* Flex Children */
+/* Flex Items */
 .panel > * {
   margin: 0;
   width: 100%;
   transition: transform 0.5s;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
 }
+
+.panel > *:first-child { transform: translateY(-100%); }
+  /* each of the first children are going to be -100%, so that puts them off-screen */
+.panel.open-active > *:first-child { transform: translateY(0); }
+.panel > *:last-child { transform: translateY(100%); }
+.panel.open-active > *:last-child { transform: translateY(0); }
+
+
 
 .panel p {
   text-transform: uppercase;
@@ -61,5 +79,6 @@ body {
 }
 
 .panel.open {
+  flex: 5; /* It will take 5 time the amount of the extra room as the rest of them, because they are regular flex of 1*/
   font-size: 40px;
 }
