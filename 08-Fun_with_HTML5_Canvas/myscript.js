@@ -7,16 +7,19 @@ ctx.strokeStyle = '#BADA55';
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
 ctx.lineWidth = 30;
+ctx.globalCompositeOperation = 'multiply' // Photoshop blend modes, there are more value that you can add, look up in google.
 
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 let hue = 0;
+let direction = true;
 
 function draw(e) {
   if(!isDrawing) return; //stop the function to running when they are not moused down (drawing)
   console.log(e);
   ctx.strokeStyle = `hsl(${hue}, 100%, 50%`;
+  // ctx.lineWidth = hue; cursore uguale alla grandezza della hue
   ctx.beginPath();
   // start from
   ctx.moveTo(lastX, lastY);
@@ -26,6 +29,17 @@ function draw(e) {
  // all this build-in function start up our line, but we're not going to actually see anything on the age until we stroke
   [lastX, lastY] = [e.offsetX, e.offsetY]; // destructuring an array: lastX define e.offsetX and lastY define e.offsetY
   hue++;
+  if(hue >= 360) {
+    hue = 0;
+  }
+  if(ctx.lineWidth >= 150 || ctx.lineWidth <= 1) {
+    direction = !direction;
+  }
+  if(direction) {
+    ctx.lineWidth++;
+  } else {
+    ctx.lineWidth--;
+  }
 };
 
 canvas.addEventListener('mousedown', (e) => {isDrawing = true;
