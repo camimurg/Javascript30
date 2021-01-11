@@ -15,13 +15,19 @@ function draw(e) {
   if(!isDrawing) return; //stop the function to running when they are not moused down (drawing)
   console.log(e);
   ctx.beginPath();
+  // start from
   ctx.moveTo(lastX, lastY);
+  // go to
   ctx.lineTo(e.offsetX, e.offsetY);
   ctx.stroke();
-}; // all this build-in function start up our line, but we're not going to actually see anything on the age until we stroke
+ // all this build-in function start up our line, but we're not going to actually see anything on the age until we stroke
+  [lastX, lastY] = [e.offsetX, e.offsetY]; // destructuring an array: lastX define e.offsetX and lastY define e.offsetY
+};
 
+canvas.addEventListener('mousedown', (e) => {isDrawing = true;
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+});
 
 canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mousedown', () => isDrawing = true);
 canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseout', () => isDrawing = false);
