@@ -11,10 +11,12 @@ ctx.lineWidth = 30;
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
+let hue = 0;
 
 function draw(e) {
   if(!isDrawing) return; //stop the function to running when they are not moused down (drawing)
   console.log(e);
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%`;
   ctx.beginPath();
   // start from
   ctx.moveTo(lastX, lastY);
@@ -23,6 +25,7 @@ function draw(e) {
   ctx.stroke();
  // all this build-in function start up our line, but we're not going to actually see anything on the age until we stroke
   [lastX, lastY] = [e.offsetX, e.offsetY]; // destructuring an array: lastX define e.offsetX and lastY define e.offsetY
+  hue++;
 };
 
 canvas.addEventListener('mousedown', (e) => {isDrawing = true;
