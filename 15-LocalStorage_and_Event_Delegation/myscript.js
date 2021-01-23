@@ -11,7 +11,18 @@ function addItem(e) {
   };
 
   items.push(item);
+  populateList(items, itemsList);
   this.reset(); // clear the input
 }
 
-addItems.addEventListener('submit', addItem)
+function populateList(plates = [], platesList) {
+  platesList.innerHTML = plates.map((plate, i) => {
+    return `
+      <li>
+        <label for="">${plate.text}</label>
+      </li>
+    `;
+  }).join('');
+}
+
+addItems.addEventListener('submit', addItem);
