@@ -5,10 +5,7 @@ function strip(bandName) {
   return bandName.replace(/^(a |the |an )/i, '').trim();
 }
 
-const sortedBand = bands.sort(function (a,b) {
-  if(a > b) {
-    return 1;
-  } else {
-    return -1;
-  }
-})
+const sortedBand = bands.sort((a, b) =>
+  strip(a) > strip(b) ? 1 : -1 );
+
+console.log(sortedBand);
