@@ -13,6 +13,14 @@ recognition.addEventListener('result', e => {
   .map(result => result.transcript)
   .join('')
 
+  p.textContent = transcript;
+  if(e.results[0].isFinal) {
+    p = document.createElement('p');
+    words.appendChild(p);
+  }
+  if(transcript.includes('sick')) {
+    console.log('💩💩💩💩💩💩💩💩💩💩💩💩')
+  }
   console.log(transcript)
 })
 
