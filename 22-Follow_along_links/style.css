@@ -34,10 +34,10 @@ a {
 
 .highlight {
   transition: all 0.2s;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid black;
   position: absolute;
   top: 0;
-  background: white;
+  background: #E4C418;
   left: 0;
   z-index: -1;
   border-radius: 20px;
